@@ -2,3 +2,6 @@
 *.nb.html
 *_cache/
 *_files/
+*.7z
+*.csv
+.Rproj.user
