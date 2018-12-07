@@ -38,6 +38,7 @@ Zakładając identyczny plik wejściowy, powtarzalność wyników zapewniają ko
 #2.2. Użyte biblioteki
 
 W poniższej analizie zostały wykorzystane następujące biblioteki:
+
 - knitr - do generowania raportu z R+markdown
 - dplyr - do przetwarzania danych
 - ggplot2 - do generowania wykresów
@@ -160,19 +161,19 @@ library(ggplot2)
 library(plotly)
 library(dplyr)
 
-ggplotly(ggplot(data=clean %>%
+ggplot(data=clean %>%
   select(res_name, local_res_atom_non_h_count, dict_atom_non_h_count) %>%
   mutate(diff = abs(local_res_atom_non_h_count-dict_atom_non_h_count)) %>%
   top_n(10), aes(x=res_name, y=diff))+
   geom_point()+
-  theme_bw())
+  theme_bw()
 
-ggplotly(ggplot(data=clean %>%
+ggplot(data=clean %>%
   select(res_name, local_res_atom_non_h_electron_sum, dict_atom_non_h_electron_sum) %>%
   mutate(diff = abs(local_res_atom_non_h_electron_sum-dict_atom_non_h_electron_sum)) %>%
   top_n(10), aes(x=res_name, y=diff))+
   geom_point()+
-  theme_bw())
+  theme_bw()
 ```
 
 #3.9. Rozkład minimalnego progu maskowania
@@ -181,8 +182,6 @@ Sekcja pokazuje rozkład wartości wszystkich kolumn zaczynających się od part
 
 ```{r part_01Distribution, message=FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
-library(plotly)
-library(reshape2)
 library(dplyr)
 
 data <- clean[,grepl("part_01", colnames(clean))] %>% 
