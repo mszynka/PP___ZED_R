@@ -183,11 +183,12 @@ Sekcja pokazuje rozkład wartości wszystkich kolumn zaczynających się od part
 ```{r part_01Distribution, message=FALSE, warning=FALSE, cache=TRUE}
 library(ggplot2)
 library(dplyr)
+library(knitr)
 
 data <- clean[,grepl("part_01", colnames(clean))] %>% 
          as.data.frame()
 
-prettyTable(data)
+knitr::kable(data)
 
 rm(data)
 ```
